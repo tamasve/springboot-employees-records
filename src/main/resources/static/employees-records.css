@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 2vh;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+}
+
+main {
+    height: 100vh;
+    background-image: url("galaxis.jpg");
+    position: relative;
+}
+
+a {
+	font: inherit;
+	text-decoration: none;
+}
+
+a:link,
+a:visited,
+a:focus {
+	color: black;
+}
+
+/* MENU BAR: nav */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 10vh;
+
+    height: 70vh;
+    margin-left: 2vw;
+}
+
+.menu section {
+    border-bottom: 1px solid gray;
+    background-color: aquamarine;
+
+    width: 25vw;
+    font-size: 1.3rem;
+
+    height: 4rem;
+    padding-left: 0.5em;
+
+    display: grid;
+    align-items: center;
+}
+
+/* GENERAL SETTINGS OF THE DATA PANEL INVOKED BY EACH MENU ITEM HOVER*/
+
+.panel {
+    position: absolute;
+    top: 10vh;
+    left: 27vw;
+
+    min-height: 40vh;
+    max-height: 80vh;
+
+    width: 70vw;
+    padding: 0.5em 3vw;
+
+    background-color: rgb(192, 192, 192);
+    border-radius: 0 1rem 1rem 1rem;
+    opacity: 1;
+}
+
+.panel input,
+.paging a,
+.page-info {
+	margin-bottom: 1rem;
+	padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+	border: 1px solid gray;
+	border-radius: 0.5rem;
+	background-color: whitesmoke;
+}
+
+.paging {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+h2 {
+	margin: 4vh 2vw;
+}
+
+/* TABLE SETTINGS ON PANELS */
+
+table {
+    /*border: 1px solid blue;*/
+}
+
+/* DATA ROWS IN THE TABLE: CAN BE SCROLLED */
+
+.scrollable {
+	height: auto;
+	max-height: 55vh;
+	overflow-y: auto;
+	margin-bottom: 1rem;
+	/*border-bottom: 1px solid blue;*/
+}
+
+.scrollable table {
+	border-top: none;
+	border-bottom: none;
+}
+
+/* FIRST COLUMN: INDEX */
+.narrow {
+	width: 5rem;
+}
+
+th {
+    background-color: rgb(247, 247, 91);
+}
+
+tr {
+    line-height: 1.5rem;
+}
+
+td, th {
+    width: min(14vw, 30rem);
+    text-align: center;
+}
+
+
+/* MENU ITEM HIGHLIGHTS BY HOVERING */
+
+.menu section:hover,
+.menu .selected {
+    background-color: rgb(192, 192, 192);
+}
+
+
+.all-employees:hover .panel {
+    opacity: 1;
+}
+
+.employees-from-a-city:hover .panel {
+    opacity: 1;
+}
+.employees-with-a-name:hover .panel {
+    opacity: 1;
+}

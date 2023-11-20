@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="employees-records.css">
+    <title>EMPLOYEES</title>
+</head>
+<body>
+    <main>
+							<!-- "settings" object: for controlling the visibility and layout params of elements -->
+        <nav class="menu">
+            <section class="all-employees" th:classappend="(${settings.selectedList}==0) ? 'selected'">
+                <a th:href="@{/menuitem/0}">All employees</a>
+            </section>
+            <section class="employees-from-a-city" th:classappend="(${settings.selectedList}==1) ? 'selected'">
+                <a th:href="@{/menuitem/1}">Employees from a city</a>
+            </section>
+            <section class="employees-with-a-name" th:classappend="(${settings.selectedList}==2) ? 'selected'">
+                <a th:href="@{/menuitem/2}">Employees with a name</a>
+            </section>
+            <section class="employees-paged" th:classappend="(${settings.selectedList}==3) ? 'selected'">
+                <a th:href="@{/menuitem/3}">All employees on more pages</a>
+            </section>
+        </nav>
+        
+        <article th:switch="${settings.selectedList}">
+		    <div class="panel" th:case="0">
+                <h2>ALL EMPLOYEES</h2>
+                <table>
+                    <tr>
+                        <th class="narrow">No.</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Birth year</th>
+                        <th>Residence</th>
+                    </tr>
+                </table>
+                <div class="scrollable">
+	                <table>
+	                    <tr th:each="employee, status : ${employees}">
+	                        <td class="narrow" th:text="${status.count}">Helene</td>
+	                        <td th:text="${employee.firstName}">Helene</td>
+	                        <td th:text="${employee.lastName}">Fielding</td>
+	                        <td th:text="${employee.birthYear}">1972</td>
+	                        <td th:text="${employee.residence}">Connecticut</td>
+	                    </tr>
+	                    <!--/*-->
+	                    <tr>
+	                        <td>Helene</td>
+	                        <td>Fielding</td>
+	                        <td>1972</td>
+	                        <td>Connecticut</td>
+	                    </tr>
+	                    <tr>
+	                        <td>John</td>
+	                        <td>Biscuit</td>
+	                        <td>1987</td>
+	                        <td>Massachusetts</td>
+	                    </tr>
+	                    <!--*/-->
+	                </table>
+                </div>
+            </div>
+            
+            <div class="panel" th:case="1">
+				<h2>ALL EMPLOYEES FROM A CITY / CITIES</h2>
+				<form th:action="@{/search-by-city}" th:object="${settings}">	<!-- data >> controller (ModelAttribute) - mapping should be called by th:action! >> in a form... -->
+					<input type="text" th:field="*{searchCity}">
+					<input type="submit" value="Search">
+				</form>
+                <table>
+                    <tr>
+                        <th class="narrow">No.</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Birth year</th>
+                        <th>Residence</th>
+                    </tr>
+                </table>
+                <div class="scrollable">
+	                <table>
+	                    <tr th:each="employee, status : ${employeesInACity}">
+	                        <td class="narrow" th:text="${status.count}">Helene</td>
+	                        <td th:text="${employee.firstName}">Helene</td>
+	                        <td th:text="${employee.lastName}">Fielding</td>
+	                        <td th:text="${employee.birthYear}">1972</td>
+	                        <td th:text="${employee.residence}">Connecticut</td>
+	                    </tr>
+	                </table>
+                </div>
+			</div>
+			
+			<div class="panel" th:case="2">
+				<h2>ALL EMPLOYEES WITH A NAME THAT HAS UNIQUE PART OF ...</h2>
+				<form th:action="@{/search-by-name}" th:object="${settings}">	<!-- data >> controller (ModelAttribute) - mapping should be called by th:action! >> in a form... -->
+					<input type="text" th:field="*{searchName}">
+					<input type="submit" value="Search">
+				</form>
+                <table>
+                    <tr>
+                        <th class="narrow">No.</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Birth year</th>
+                        <th>Residence</th>
+                    </tr>
+                </table>
+                <div class="scrollable">
+	                <table>
+	                    <tr th:each="employee, status : ${employeesByName}">
+	                        <td class="narrow" th:text="${status.count}">Helene</td>
+	                        <td th:text="${employee.firstName}">Helene</td>
+	                        <td th:text="${employee.lastName}">Fielding</td>
+	                        <td th:text="${employee.birthYear}">1972</td>
+	                        <td th:text="${employee.residence}">Connecticut</td>
+	                    </tr>
+	                </table>
+                </div>
+			</div>
+			
+			<div class="panel" th:case="3">
+                <h2>ALL EMPLOYEES ON MORE PAGES</h2>
+                <div class="paging">
+					<span class="page-info">
+						<span th:text="${settings.pageNumber+1}">0</span>
+						<span>/</span>
+						<span th:text="${settings.pageCount}">0</span>
+					</span>
+					<a th:href="@{/previous-page}">PREVIOUS</a>
+					<a th:href="@{/next-page}">NEXT</a>
+				</div>
+                <table>
+                    <tr>
+                        <th class="narrow"><a th:href="@{/no-sorting}">No.</a></th>
+                        <th><a th:href="@{/sort-by/firstName}">First name</a></th>
+                        <th><a th:href="@{/sort-by/lastName}">Last name</a></th>
+                        <th><a th:href="@{/sort-by/birthYear}">Birth year</a></th>
+                        <th><a th:href="@{/sort-by/residence}">Residence</a></th>
+                    </tr>
+                </table>
+                <div class="scrollable">
+	                <table>
+	                    <tr th:each="employee, status : ${employeesOnPages}">
+	                        <td class="narrow" th:text="${status.count + settings.pageNumber * 15}">0</td>
+	                        <td th:text="${employee.firstName}">Helene</td>
+	                        <td th:text="${employee.lastName}">Fielding</td>
+	                        <td th:text="${employee.birthYear}">1972</td>
+	                        <td th:text="${employee.residence}">Connecticut</td>
+	                    </tr>
+	                </table>
+                </div>
+            </div>
+
+		</article>
+
+    </main>
+    
+</body>
+</html>

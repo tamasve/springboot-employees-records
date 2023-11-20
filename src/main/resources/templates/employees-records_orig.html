@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="employees-records.css">
+    <title>EMPLOYEES</title>
+</head>
+<body>
+    <main>
+        <nav class="menu">
+            <section class="all-employees">
+                All employees
+                <div class="panel">
+                    <h2>ALL EMPLOYEES</h2>
+                    <table>
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Birth year</th>
+                            <th>Residence</th>
+                        </tr>
+                        <tr th:each="employee : ${employees}">
+                            <td th:text="${employee.firstname}">Helene</td>
+                            <td th:text="${employee.lastname}">Fielding</td>
+                            <td th:text="${employee.birthyear}">1972</td>
+                            <td th:text="${employee.city}">Connecticut</td>
+                        </tr>
+                        <!--/*-->
+                        <tr>
+                            <td>Helene</td>
+                            <td>Fielding</td>
+                            <td>1972</td>
+                            <td>Connecticut</td>
+                        </tr>
+                        <tr>
+                            <td>John</td>
+                            <td>Biscuit</td>
+                            <td>1987</td>
+                            <td>Massachusetts</td>
+                        </tr>
+                        <!--*/-->
+                    </table>
+                </div>
+            </section>
+            <section class="employees-from-a-city">
+                Employees from a city
+                <div class="panel">
+                    <h2>EMPLOYEES FROM A CITY</h2>
+                    <table>
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Birth year</th>
+                            <th>Residence</th>
+                        </tr>
+                        <tr>
+                            <td>Helene</td>
+                            <td>Fielding</td>
+                            <td>1972</td>
+                            <td>Connecticut</td>
+                        </tr>
+                        <tr>
+                            <td>John</td>
+                            <td>Biscuit</td>
+                            <td>1987</td>
+                            <td>Massachusetts</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <section class="employees-with-a-name">
+                Employees with a name
+                <div class="panel">
+                    <h2>EMPLOYEES WITH A NAME</h2>
+                    <table>
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Birth year</th>
+                            <th>Residence</th>
+                        </tr>
+                        <tr>
+                            <td>Helene</td>
+                            <td>Fielding</td>
+                            <td>1972</td>
+                            <td>Connecticut</td>
+                        </tr>
+                        <tr>
+                            <td>John</td>
+                            <td>Biscuit</td>
+                            <td>1987</td>
+                            <td>Massachusetts</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+        </nav>
+
+    </main>
+    
+</body>
+</html>

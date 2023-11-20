@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 2vh;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+main {
+    height: 100vh;
+    background-color: yellow;
+}
+
+/* MENU BAR */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 10vh;
+
+    height: 70vh;
+    margin-left: 2vw;
+}
+
+.menu section {
+    border-bottom: 1px solid gray;
+    background-color: aquamarine;
+
+    width: 25vw;
+    font-size: 1.3rem;
+
+    height: 4rem;
+    padding-left: 0.5em;
+
+    display: grid;
+    align-items: center;
+}
+
+/* GENERAL SETTINGS OF THE PANEL INVOKED BY EACH MENU ITEM HOVER*/
+
+.panel {
+    position: fixed;
+    top: 10vh;
+    left: 27vw;
+
+    min-height: 70vh;
+    width: 70vw;
+    padding: 0.5em;
+
+    background-color: white;
+    border-radius: 0 1rem 1rem 1rem;
+    opacity: 0;
+}
+
+/* ONLY FOR DEVELOPMENT */
+/*.all-employees .panel {*/
+/*    opacity: 1;*/
+/*}*/
+
+/* TABLE SETTINGS ON PANELS */
+
+table {
+    margin: 5vw 3vw;
+    border: 1px solid blue;
+}
+
+th {
+    background-color: rgb(247, 247, 91);
+}
+
+tr {
+    line-height: 1.5rem;
+}
+
+td {
+    max-width: min(14vw, 30rem);
+    text-align: center;
+}
+
+/* EACH PANEL INVOKED BY EACH MENU ITEM HOVER */
+
+.all-employees:hover {
+    background-color: white;
+}
+
+.all-employees:hover .panel {
+    opacity: 1;
+}
+
+.all-employees:active .panel,
+.all-employees:focus .panel {
+    opacity: 1;
+}
+
+/*.employees-from-a-city:hover {*/
+/*    background-color: white;*/
+/*}*/
+
+/*.employees-from-a-city:hover .panel {*/
+/*    opacity: 1;*/
+/*}*/
+
+/*.employees-from-a-city .panel {*/
+/*    opacity: 0;*/
+/*}*/
+
+/*.employees-with-a-name:hover {*/
+/*    background-color: white;*/
+/*}*/
+
+/*.employees-with-a-name:hover .panel {*/
+/*    opacity: 1;*/
+/*}*/
+
+/*.employees-with-a-name .panel {*/
+/*    opacity: 0;*/
+/*}*/
