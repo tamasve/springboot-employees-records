@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * A practice project for JPA, SQL, Thymeleaf, UI
+ * using also PagingAndSortingRepository and native SQL query in repositories
+ * 
  * Input data is merged from diff. web sources
  * 23-24, 27-29 Sept, 1-2 Oct 2023
  */
